@@ -6,7 +6,7 @@
 
  Key aspects:
 
-  - camel-http proxy configuratino is applied *once* via ProxyConfiguration.java
+  - camel-http proxy configuration is applied *once* via ProxyConfiguration.java
   - Actual proxy host and proxy port values are *defined* in application.properties (no need to pass them via java -jar -D..)
   - camel-http component is free of any "proxy" configuration
   - logHttpActivity=true returns following output:
