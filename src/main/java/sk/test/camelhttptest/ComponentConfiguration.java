@@ -1,31 +1,21 @@
 package sk.test.camelhttptest;
 
-import org.apache.camel.component.http.HttpComponent;
-import org.apache.camel.CamelContext;
-import org.apache.camel.spi.CamelEvent;
-
-import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
-import io.quarkus.runtime.Startup;
-import org.apache.camel.quarkus.core.events.ComponentAddEvent;
+import jakarta.inject.Named;
+
+import org.apache.camel.component.http.HttpComponent;
 
 
 @ApplicationScoped
-@Startup
 public class ComponentConfiguration {
 
-    @Inject
-    SystemPropertiesHttpClientConfigurer systemPropertiesHttpClientConfigurer;
+    @Named("http-proxy")
+    HttpComponent http() {
 
-    public void onComponentAdd(@Observes ComponentAddEvent event) {
-        if (event.getComponent() instanceof HttpComponent) {
-        System.out.println("<<<<<< Creating http-proxy component >>>>>>");
-         HttpComponent httpComponent = (HttpComponent) event.getComponent();
-        httpComponent.setLogHttpActivity(true);
-        httpComponent.setHttpClientConfigurer(systemPropertiesHttpClientConfigurer);
-        
-        }
+        HttpComponent component = new HttpComponent();
+        component.setUseSystemProperties(true);
+        component.setLogHttpActivity(true);
+
+        return component;
     }
 }
