@@ -11,7 +11,7 @@ public class CamelHttp extends RouteBuilder {
         System.out.println("<<<<<< CamelHttp configure() called >>>>>>");
         
         from("timer:myTimer?period=5s")
-            .to("http:6895e6b2039a1a2b2890bc40.mockapi.io/api/v1/test?logHttpActivity=true&followRedirects=true")
+            .to("http:localhost:8080")
             .log("Response from web via proxy ${body}");
     }
 }
