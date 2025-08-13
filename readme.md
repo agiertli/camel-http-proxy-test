@@ -3,5 +3,7 @@
 ```
  - Fix the application.properties based on your preference
  - mvn clean package
- - java -Dhttp.proxyHost=localhost -Dhttp.proxyPort=8000 -Dquarkus.http.port=8081 -jar target/quarkus-app/quarkus-run.jar        
+ - java -Dquarkus.http.port=8081 -jar target/quarkus-app/quarkus-run.jar        
 ```
+
+Proxy settings are configured globally via application.properties
