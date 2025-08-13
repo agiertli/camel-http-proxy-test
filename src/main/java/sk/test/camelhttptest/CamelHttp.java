@@ -11,7 +11,7 @@ public class CamelHttp extends RouteBuilder {
         System.out.println("<<<<<< CamelHttp configure() called >>>>>>");
         
         from("timer:myTimer?period=5s")
-            .to("http-proxy:localhost:8080")
+            .to("http:httpbin.org")
             .log("Response from web via proxy ${body}");
     }
 }
