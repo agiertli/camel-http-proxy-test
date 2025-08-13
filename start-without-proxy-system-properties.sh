@@ -1,0 +1,1 @@
+ java -Dhttp.proxyPort=8000 -Dquarkus.http.port=8081  -jar target/quarkus-app/quarkus-run.jar   
